@@ -1,6 +1,7 @@
 // Global module
 const gameModule = (() => {
-  const gameBoard = [];
+  const gameBoard = ["X", "O", "O", "X", "X", "O", "X", "X", "X"];
+  return {gameBoard};
 })();
 
 // Players
@@ -10,5 +11,11 @@ const playerFactory = (name, marker) => {
 
 // FUNCTION: display game board
 function displayBoard() {
-  // code goes here
+  
+  for (let i = 0; i < 9; i++) {
+    const tile = document.createElement('div');
+    tile.setAttribute('id', `${i}`);
+    tile.setAttribute('class', "tile");
+  }
+
 }
