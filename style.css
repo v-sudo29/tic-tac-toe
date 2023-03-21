@@ -1,15 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 /* Global attributes */
 :root {
   box-sizing: border-box;
 }
 
-body {
+body, html {
   margin: 0;
   padding: 0;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Roboto';
 }
 
 /* Body */
@@ -30,4 +33,10 @@ body {
   background-color: #f0fdf4;
   width: 200px;
   height: 200px;
+  font-size: 100px;
+  font-weight: 500;
+  color:#4ade80;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

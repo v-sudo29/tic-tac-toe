@@ -1,6 +1,6 @@
 // Global module
 const gameModule = (() => {
-  
+
   // Array holds markers
   const gameBoard = ["X", "O", "O", "X", "X", "O", "X", "X", "X"];
 
@@ -11,6 +11,7 @@ const gameModule = (() => {
       const tile = document.createElement('div');
       tile.setAttribute('id', `${i}`);
       tile.setAttribute('class', "tile");
+      tile.innerHTML = gameBoard[i];
       boardContainer.appendChild(tile);
     }
   };
