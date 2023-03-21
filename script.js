@@ -10,7 +10,7 @@ const gameModule = (() => {
     for (let i = 0; i < 9; i++) {
       const tile = document.createElement('div');
       tile.setAttribute('id', `${i}`);
-      tile.setAttribute('class', "tile");
+      tile.classList.add('tile', 'empty');
       tile.innerHTML = gameBoard[i];
       boardContainer.appendChild(tile);
     }
@@ -27,8 +27,9 @@ gameModule.displayBoard();
 
 // Listen for user click, populate tile with marker
 const allTiles = document.querySelectorAll('.tile');
-allTiles.forEach(tile => {
-  tile.addEventListener('mouseover', () => {
-    
+allTiles.forEach(gameTile => {
+  gameTile.addEventListener('click', () => {
+    gameTile.innerHTML = 'X';
+    gameTile.classList.remove('empty');
   });
 });
