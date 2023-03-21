@@ -36,16 +36,19 @@ const gameModule = (() => {
   // Populate empty tile with current player's marker
   const populate = (gameTile) => {
       gameTile.addEventListener('click', () => {
+        const markerOne = document.querySelector('.marker-one').innerHTML;
+        const markerTwo = document.querySelector('.marker-two').innerHTML;
         const middleFooterContent = document.querySelector('.middle-footer');
         const childDiv = middleFooterContent.firstChild;
+
         if (childDiv.classList.contains('player-one-announcer') === true) {
-          gameTile.innerHTML = 'X';
+          gameTile.innerHTML = `${markerOne}`;
           gameTile.classList.remove('empty');
           childDiv.innerHTML = 'Player Two\'s turn';
           childDiv.classList.remove('player-one-announcer');
           childDiv.classList.add('player-two-announcer');
         } else if (childDiv.classList.contains('player-two-announcer') === true) {
-          gameTile.innerHTML = 'O';
+          gameTile.innerHTML = `${markerTwo}`;
           gameTile.classList.remove('empty');
           childDiv.innerHTML = 'Player One\'s turn';
           childDiv.classList.remove('player-two-announcer');
