@@ -40,6 +40,16 @@ const gameModule = (() => {
         gameTile.classList.remove('empty');
     });
   };
+
+  // Insert announcer
+  const insertAnnouncer = () => {
+    const middleFooterDiv = document.querySelector('.middle-footer');
+    const announcer = document.createElement('div');
+    const text = document.createTextNode('Player One\'s turn');
+    announcer.setAttribute('class', 'announcer');
+    announcer.appendChild(text);
+    middleFooterDiv.appendChild(announcer);
+  }
   
   // Clear middle footer
   const clearMiddleFooter = () => {
@@ -48,7 +58,12 @@ const gameModule = (() => {
       middleFooterDiv.removeChild(middleFooterDiv.childNodes[0]);
     }
   }
-  return {gameBoard, displayBoard, switchMarkers, populate, clearMiddleFooter};
+  return {gameBoard, 
+          displayBoard, 
+          switchMarkers, 
+          populate, 
+          clearMiddleFooter, 
+          insertAnnouncer};
 })();
 
 // Player factory
@@ -65,6 +80,11 @@ const createPlayers = () => {
   const playerTwo = playerFactory('player two', markerTwo);
 };
 
+// FUNCTION: announce winner when a player has won
+const announceWinner = () => {
+  const winner = null;
+}
+
 // Display tile board
 gameModule.displayBoard();
 
@@ -75,6 +95,7 @@ switchButton.addEventListener('click', gameModule.switchMarkers);
 startButton.addEventListener('click', () =>{
   createPlayers();
   gameModule.clearMiddleFooter();
+  gameModule.insertAnnouncer();
 });
 
 // Listen for user click, populate tile with marker
