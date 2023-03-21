@@ -18,14 +18,27 @@ const gameModule = (() => {
       boardContainer.appendChild(tile);
     }
   };
-  return {gameBoard, displayBoard};
+
+  // Switch markers
+  const switchMarkers = () => {
+    const markerOne = document.querySelector('.marker-one');
+    const markerTwo = document.querySelector('.marker-two');
+    if (markerOne.innerHTML === 'X') {
+      markerOne.innerHTML = 'O';
+      markerTwo.innerHTML = 'X';
+    } else if (markerOne.innerHTML === 'O') {
+      markerOne.innerHTML = 'X';
+      markerTwo.innerHTML = 'O';
+    }
+  }
+
+  return {gameBoard, displayBoard, switchMarkers};
 })();
 
 // Player factory
 const playerFactory = (name, marker) => ({ name, marker });
 
 // Create player
-
 
 gameModule.displayBoard();
 
@@ -39,14 +52,4 @@ allTiles.forEach(gameTile => {
 });
 
 // Listen for button click to switch markers
-switchButton.addEventListener('click', () => {
-  const markerOne = document.querySelector('.marker-one');
-  const markerTwo = document.querySelector('.marker-two');
-  if (markerOne.innerHTML === 'X') {
-    markerOne.innerHTML = 'O';
-    markerTwo.innerHTML = 'X';
-  } else if (markerOne.innerHTML === 'O') {
-    markerOne.innerHTML = 'X';
-    markerTwo.innerHTML = 'O';
-  }
-});
+switchButton.addEventListener('click', gameModule.switchMarkers);
