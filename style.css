@@ -62,6 +62,7 @@ body {
 
 .empty:hover {
   background-color: #dcfce7;
+  cursor: pointer;
 }
 
 /* Footer */
