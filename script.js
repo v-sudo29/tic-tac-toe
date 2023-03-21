@@ -14,7 +14,7 @@ const gameModule = (() => {
     for (let i = 0; i < 9; i++) {
       const tile = document.createElement('div');
       tile.setAttribute('id', `${i}`);
-      tile.classList.add('tile', 'empty');
+      tile.classList.add('tile');
       tile.innerHTML = gameBoard[i];
       boardContainer.appendChild(tile);
     }
@@ -35,19 +35,24 @@ const gameModule = (() => {
 
   // Populate empty tile with current player's marker
   const populate = (gameTile) => {
+    
+    // Add hover
+    gameTile.classList.add('empty');
+
+      // Event listener to populate tile
       gameTile.addEventListener('click', () => {
         const markerOne = document.querySelector('.marker-one').innerHTML;
         const markerTwo = document.querySelector('.marker-two').innerHTML;
         const middleFooterContent = document.querySelector('.middle-footer');
         const childDiv = middleFooterContent.firstChild;
 
-        if (childDiv.classList.contains('player-one-announcer') === true) {
+        if (childDiv.classList.contains('player-one-announcer') && gameTile.classList.contains('empty')) {
           gameTile.innerHTML = `${markerOne}`;
           gameTile.classList.remove('empty');
           childDiv.innerHTML = 'Player Two\'s turn';
           childDiv.classList.remove('player-one-announcer');
           childDiv.classList.add('player-two-announcer');
-        } else if (childDiv.classList.contains('player-two-announcer') === true) {
+        } else if (childDiv.classList.contains('player-two-announcer') && gameTile.classList.contains('empty')) {
           gameTile.innerHTML = `${markerTwo}`;
           gameTile.classList.remove('empty');
           childDiv.innerHTML = 'Player One\'s turn';
@@ -74,6 +79,7 @@ const gameModule = (() => {
       middleFooterDiv.removeChild(middleFooterDiv.childNodes[0]);
     }
   }
+
   return {gameBoard, 
           displayBoard, 
           switchMarkers, 
@@ -99,6 +105,10 @@ const createPlayers = () => {
 // FUNCTION: announce winner when a player has won
 const announceWinner = () => {
   const winner = null;
+
+  while (winner = null) {
+    // code here
+  }
 }
 
 // Display tile board
