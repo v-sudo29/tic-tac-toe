@@ -33,11 +33,24 @@ const gameModule = (() => {
     }
   };
 
-  // Populate empty tile with marker
+  // Populate empty tile with current player's marker
   const populate = (gameTile) => {
       gameTile.addEventListener('click', () => {
-        gameTile.innerHTML = 'X';
-        gameTile.classList.remove('empty');
+        const middleFooterContent = document.querySelector('.middle-footer');
+        const childDiv = middleFooterContent.firstChild;
+        if (childDiv.classList.contains('player-one-announcer') === true) {
+          gameTile.innerHTML = 'X';
+          gameTile.classList.remove('empty');
+          childDiv.innerHTML = 'Player Two\'s turn';
+          childDiv.classList.remove('player-one-announcer');
+          childDiv.classList.add('player-two-announcer');
+        } else if (childDiv.classList.contains('player-two-announcer') === true) {
+          gameTile.innerHTML = 'O';
+          gameTile.classList.remove('empty');
+          childDiv.innerHTML = 'Player One\'s turn';
+          childDiv.classList.remove('player-two-announcer');
+          childDiv.classList.add('player-one-announcer');
+        }
     });
   };
 
@@ -46,7 +59,7 @@ const gameModule = (() => {
     const middleFooterDiv = document.querySelector('.middle-footer');
     const announcer = document.createElement('div');
     const text = document.createTextNode('Player One\'s turn');
-    announcer.setAttribute('class', 'announcer');
+    announcer.classList.add('player-one-announcer');
     announcer.appendChild(text);
     middleFooterDiv.appendChild(announcer);
   }
@@ -92,12 +105,14 @@ gameModule.displayBoard();
 switchButton.addEventListener('click', gameModule.switchMarkers);
 
 // BUTTON: Start game
-startButton.addEventListener('click', () =>{
+startButton.addEventListener('click', () => {
+
+  // Create players and insert announcer
   createPlayers();
   gameModule.clearMiddleFooter();
   gameModule.insertAnnouncer();
-});
 
-// Listen for user click, populate tile with marker
-const allTiles = document.querySelectorAll('.tile');
-allTiles.forEach((gameTile) => gameModule.populate(gameTile));
+  // Players can populate tiles
+  const allTiles = document.querySelectorAll('.tile');
+  allTiles.forEach((gameTile) => gameModule.populate(gameTile));  
+});
