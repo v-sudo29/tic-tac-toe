@@ -67,19 +67,47 @@ body {
 /* Footer */
 .footer {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  gap: 50px;
+  padding: 40px 0px;
+  gap: 30px;
   font-size: 30px;
 }
 
-.player-one, .player-two {
+.player-one-container, .player-two-container {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: nowrap;
+  padding: 0px 20px;
 }
 
 .marker-one, .marker-two {
   font-size: 50px;
   color: #4ade80;
+}
+
+/* Middle Footer */
+.middle-footer {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+  height: 100%;
+}
+
+.switch-button {
+  border: none;
+  border-radius: 15px;
+  padding: 20px 30px;
+  font-size: 17px;
+  font-weight: 700;
+  background-color: #a7f9be;
+  cursor: pointer;
+}
+
+.switch-button:hover {
+  background-color: #69e88d;
 }
