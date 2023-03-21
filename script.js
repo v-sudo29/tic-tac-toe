@@ -31,7 +31,7 @@ const gameModule = (() => {
       markerOne.innerHTML = 'X';
       markerTwo.innerHTML = 'O';
     }
-  }
+  };
 
   // Populate empty tile with marker
   const populate = (gameTile) => {
@@ -39,7 +39,7 @@ const gameModule = (() => {
         gameTile.innerHTML = 'X';
         gameTile.classList.remove('empty');
     });
-  }
+  };
 
   return {gameBoard, displayBoard, switchMarkers, populate};
 })();
@@ -47,11 +47,27 @@ const gameModule = (() => {
 // Player factory
 const playerFactory = (name, marker) => ({ name, marker });
 
+// FUNCTION: create players
+const createPlayers = () => {
+
+  // Get finalized markers from DOM
+  const markerOne = document.querySelector('.marker-one').innerHTML;
+  const markerTwo = document.querySelector('.marker-two').innerHTML;
+
+  const playerOne = playerFactory('player one', markerOne);
+  const playerTwo = playerFactory('player two', markerTwo);
+};
+
+// FUNCTION : clear middle footer
+
 // Display tile board
 gameModule.displayBoard();
 
 // BUTTON: Switch markers
 switchButton.addEventListener('click', gameModule.switchMarkers);
+
+// BUTTON: Start game
+startButton.addEventListener('click', createPlayers);
 
 // Listen for user click, populate tile with marker
 const allTiles = document.querySelectorAll('.tile');
