@@ -1,6 +1,6 @@
 // Global variables
 const switchButton = document.querySelector('.switch-button');
-const allTiles = document.querySelectorAll('.tile');
+const startButton = document.querySelector('.start-button');
 
 // Global module
 const gameModule = (() => {
@@ -34,10 +34,10 @@ const gameModule = (() => {
   }
 
   // Populate empty tile with marker
-  const populate = (emptyTile) => {
-      emptyTile.addEventListener('click', () => {
-        emptyTile.innerHTML = 'X';
-        emptyTile.classList.remove('empty');
+  const populate = (gameTile) => {
+      gameTile.addEventListener('click', () => {
+        gameTile.innerHTML = 'X';
+        gameTile.classList.remove('empty');
     });
   }
 
@@ -50,8 +50,9 @@ const playerFactory = (name, marker) => ({ name, marker });
 // Display tile board
 gameModule.displayBoard();
 
-// Listen for user click, populate tile with marker
-allTiles.forEach((gameTile) => gameModule.populate(gameTile));
-
-// Listen for button click to switch markers
+// BUTTON: Switch markers
 switchButton.addEventListener('click', gameModule.switchMarkers);
+
+// Listen for user click, populate tile with marker
+const allTiles = document.querySelectorAll('.tile');
+allTiles.forEach((gameTile) => gameModule.populate(gameTile));
