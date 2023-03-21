@@ -1,3 +1,6 @@
+// Global variables
+const switchButton = document.querySelector('.switch-button');
+
 // Global module
 const gameModule = (() => {
 
@@ -33,4 +36,17 @@ allTiles.forEach(gameTile => {
     gameTile.innerHTML = 'X';
     gameTile.classList.remove('empty');
   });
+});
+
+// Listen for button click to switch markers
+switchButton.addEventListener('click', () => {
+  const markerOne = document.querySelector('.marker-one');
+  const markerTwo = document.querySelector('.marker-two');
+  if (markerOne.innerHTML === 'X') {
+    markerOne.innerHTML = 'O';
+    markerTwo.innerHTML = 'X';
+  } else if (markerOne.innerHTML === 'O') {
+    markerOne.innerHTML = 'X';
+    markerTwo.innerHTML = 'O';
+  }
 });
