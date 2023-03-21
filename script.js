@@ -17,10 +17,10 @@ const gameModule = (() => {
     // Get finalized markers from DOM
     const markerOne = document.querySelector('.marker-one').innerHTML;
     const markerTwo = document.querySelector('.marker-two').innerHTML;
-
     const one = playerFactory('Player One', markerOne);
     const two = playerFactory('Player Two', markerTwo);
 
+    // Add players to currentPlayers array
     currentPlayers.push(one, two);
   };
 
@@ -31,29 +31,21 @@ const gameModule = (() => {
 
   // FUNCTION: check if a player has won
   const checkWinner = () => {
-    const winner = null;
     const markerOne = document.querySelector('.marker-one').innerHTML;
     const markerTwo = document.querySelector('.marker-two').innerHTML;
-    const announcer = document.querySelector('.announcer');
-    const playerOne = currentPlayers;
-    console.log(playerOne);
+    const playerOne = currentPlayers[0].name;
+    const playerTwo = currentPlayers[1].name;
 
     // Horizontal match
-    if ((gameBoard[0] === markerOne) && (gameBoard[1] === markerOne) && (gameBoard[2] === markerOne)) {
-
-    } else if ((gameBoard[3] === markerOne) && (gameBoard[4] === markerOne) && (gameBoard[5] === markerOne)) {
-      console.log('Player One wins!');
-    } else if (gameBoard[6] === markerOne && gameBoard[7] === markerOne && gameBoard[8] === markerOne) {
-      console.log('Player One wins!');
-    }
-
-    if ((gameBoard[0] === markerTwo) && (gameBoard[1] === markerTwo) && (gameBoard[2] === markerTwo)) {
-      console.log('Player Two wins!');
-    } else if ((gameBoard[3] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[5] === markerTwo)) {
-      console.log('Player Two wins!');
-    } else if (gameBoard[6] === markerTwo && gameBoard[7] === markerTwo && gameBoard[8] === markerTwo) {
-      console.log('Player Two wins!');
-    }
+    if ((gameBoard[0] === markerOne) && (gameBoard[1] === markerOne) && (gameBoard[2] === markerOne) ||
+      (gameBoard[3] === markerOne) && (gameBoard[4] === markerOne) && (gameBoard[5] === markerOne) ||
+      ((gameBoard[6] === markerOne) && (gameBoard[7] === markerOne) && (gameBoard[8] === markerOne))) {
+        announceWinner(playerOne);
+    } else if ((gameBoard[0] === markerTwo) && (gameBoard[1] === markerTwo) && (gameBoard[2] === markerTwo)
+      (gameBoard[3] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[5] === markerTwo)
+      (gameBoard[6] === markerTwo && gameBoard[7] === markerTwo && gameBoard[8] === markerTwo)) {
+        announceWinner(playerTwo);
+    } 
 
     // Vertical match
     if (gameBoard[0] === markerOne && gameBoard[3] === markerOne && gameBoard[6] === markerOne) {
