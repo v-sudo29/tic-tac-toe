@@ -2,7 +2,7 @@
 const gameModule = (() => {
 
   // Array holds markers
-  const gameBoard = ["X", "O", "O", "X", "X", "O", "X", "X", "X"];
+  const gameBoard = ['', '', '', '', '', '', '', '', ''];
 
   // Display game board tiles
   const displayBoard = () => {
@@ -23,5 +23,12 @@ const playerFactory = (name, marker) => {
   // code goes here
 };
 
-
 gameModule.displayBoard();
+
+// Listen for user click, populate tile with marker
+const allTiles = document.querySelectorAll('.tile');
+allTiles.forEach(tile => {
+  tile.addEventListener('mouseover', () => {
+    
+  });
+});
