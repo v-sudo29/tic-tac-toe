@@ -38,8 +38,6 @@ const gameModule = (() => {
 // Player factory
 const playerFactory = (name, marker) => ({ name, marker });
 
-// Create player
-
 gameModule.displayBoard();
 
 // Listen for user click, populate tile with marker

@@ -98,7 +98,7 @@ body {
   height: 100%;
 }
 
-.switch-button {
+.switch-button, .start-button {
   border: none;
   border-radius: 15px;
   padding: 20px 30px;
@@ -108,6 +108,11 @@ body {
   cursor: pointer;
 }
 
-.switch-button:hover {
+.switch-button:hover, .start-button:hover {
   background-color: #69e88d;
+  box-shadow: 2px 2px 2px rgb(0 0 0 / 0.1);
+}
+
+.start-button {
+  padding: 20px 47px;
 }
