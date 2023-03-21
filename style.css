@@ -22,12 +22,15 @@ body {
   width: 100%;
 }
 
+.header, .player-one, .player-two {
+  color: #8bba9c;
+}
+
 /* Header */
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #5f806b;
   font-size: 60px;
 }
 
@@ -66,13 +69,13 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 50px;
   font-size: 30px;
 }
 
 .player-one, .player-two {
   display: flex;
   align-items: center;
-  color: #5f806b;
   gap: 20px;
 }
 

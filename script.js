@@ -18,8 +18,11 @@ const gameModule = (() => {
   return {gameBoard, displayBoard};
 })();
 
-// Players
+// Player factory
 const playerFactory = (name, marker) => ({ name, marker });
+
+// Create player
+
 
 gameModule.displayBoard();
 
