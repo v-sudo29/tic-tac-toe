@@ -10,20 +10,20 @@ body {
   padding: 0;
   min-height: 100vh;
   min-width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-family: 'Roboto';
-}
-
-.header, .footer {
-  flex: 1;
-  width: 100%;
 }
 
 .header, .player-one, .player-two {
   color: #8bba9c;
+}
+
+/* Body Div */
+.body-div {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 20vh 60vh 20vh;
+  grid-template-columns: 1fr;
+  align-items: center;
 }
 
 /* Header */
@@ -31,30 +31,40 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px 20px;
   font-size: 60px;
 }
 
 /* Body */
+.content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .border-container {
+  height: 89.7%;
   background-color: #4ade80;
   width: 610px;
 }
 
 .gameboard-container {
-  width: 602px;
+  height: 100%;
+  width: 610px;
   grid-gap: 5px;
   display: grid;
-  grid-template-columns: repeat(3, 200px);
-  grid-template-rows: repeat(3, 200px);
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-template-rows: repeat(3, minmax(200px, 1fr));
 }
 
 .tile {
   background-color: #f0fdf4;
-  width: 200px;
-  height: 200px;
+  min-width: 200px;
+  min-height: 200px;
   font-size: 100px;
   font-weight: 500;
   color:#4ade80;
+
   display: flex;
   justify-content: center;
   align-items: center;

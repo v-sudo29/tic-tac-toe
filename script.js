@@ -59,7 +59,12 @@ const createPlayers = () => {
 };
 
 // FUNCTION : clear middle footer
-
+const clearMiddleFooter = () => {
+  const middleFooterDiv = document.querySelector('.middle-footer');
+  while (middleFooterDiv.hasChildNodes()) {
+    middleFooterDiv.removeChild(middleFooterDiv.childNodes[0]);
+  }
+}
 // Display tile board
 gameModule.displayBoard();
 
@@ -67,7 +72,10 @@ gameModule.displayBoard();
 switchButton.addEventListener('click', gameModule.switchMarkers);
 
 // BUTTON: Start game
-startButton.addEventListener('click', createPlayers);
+startButton.addEventListener('click', () =>{
+  createPlayers();
+  clearMiddleFooter();
+});
 
 // Listen for user click, populate tile with marker
 const allTiles = document.querySelectorAll('.tile');
