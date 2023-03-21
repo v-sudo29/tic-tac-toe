@@ -8,16 +8,39 @@ const gameModule = (() => {
   // Array holds markers
   const gameBoard = ['', '', '', '', '', '', '', '', ''];
 
+  // Array holds players
+  const currentPlayers = [];
+
+  // FUNCTION: create players
+  const createPlayers = () => {
+
+    // Get finalized markers from DOM
+    const markerOne = document.querySelector('.marker-one').innerHTML;
+    const markerTwo = document.querySelector('.marker-two').innerHTML;
+
+    const one = playerFactory('Player One', markerOne);
+    const two = playerFactory('Player Two', markerTwo);
+
+    currentPlayers.push(one, two);
+  };
+
+  // FUNCTION: announce winner
+  const announceWinner = (winner) => {
+    document.querySelector('.announcer').innerHTML = `${winner} wins!`;
+  };
+
   // FUNCTION: check if a player has won
   const checkWinner = () => {
     const winner = null;
     const markerOne = document.querySelector('.marker-one').innerHTML;
     const markerTwo = document.querySelector('.marker-two').innerHTML;
     const announcer = document.querySelector('.announcer');
+    const playerOne = currentPlayers;
+    console.log(playerOne);
 
     // Horizontal match
     if ((gameBoard[0] === markerOne) && (gameBoard[1] === markerOne) && (gameBoard[2] === markerOne)) {
-      console.log('Player One wins!');
+
     } else if ((gameBoard[3] === markerOne) && (gameBoard[4] === markerOne) && (gameBoard[5] === markerOne)) {
       console.log('Player One wins!');
     } else if (gameBoard[6] === markerOne && gameBoard[7] === markerOne && gameBoard[8] === markerOne) {
@@ -63,7 +86,7 @@ const gameModule = (() => {
     }
   }
 
-  // Display game board tiles
+  // FUNCTION: Display game board tiles
   const displayBoard = () => {
     const boardContainer = document.querySelector('.gameboard-container');
     for (let i = 0; i < 9; i++) {
@@ -75,7 +98,7 @@ const gameModule = (() => {
     }
   };
 
-  // Switch markers
+  // FUNCTION: Switch markers
   const switchMarkers = () => {
     const markerOne = document.querySelector('.marker-one');
     const markerTwo = document.querySelector('.marker-two');
@@ -88,7 +111,7 @@ const gameModule = (() => {
     }
   };
 
-  // Populate empty tile with current player's marker
+  // FUNCTION: Populate empty tile with current player's marker
   const populate = (gameTile) => {
 
     // Add hover
@@ -137,7 +160,7 @@ const gameModule = (() => {
     });
   };
 
-  // Insert announcer
+  // FUNCTION: Insert announcer
   const insertAnnouncer = () => {
     const middleFooterDiv = document.querySelector('.middle-footer');
     const announcer = document.createElement('div');
@@ -147,7 +170,7 @@ const gameModule = (() => {
     middleFooterDiv.appendChild(announcer);
   }
   
-  // Clear middle footer
+  // FUNCTION: Clear middle footer
   const clearMiddleFooter = () => {
     const middleFooterDiv = document.querySelector('.middle-footer');
     while (middleFooterDiv.hasChildNodes()) {
@@ -157,29 +180,16 @@ const gameModule = (() => {
 
   return {gameBoard, 
           displayBoard, 
-          switchMarkers, 
+          switchMarkers,
+          createPlayers, 
           populate, 
           clearMiddleFooter, 
           insertAnnouncer,
-          checkWinner
         };
 })();
 
 // Player factory
 const playerFactory = (name, marker) => ({ name, marker });
-
-// FUNCTION: create players
-const createPlayers = () => {
-
-  // Get finalized markers from DOM
-  const markerOne = document.querySelector('.marker-one').innerHTML;
-  const markerTwo = document.querySelector('.marker-two').innerHTML;
-
-  const playerOne = playerFactory('Player One', markerOne);
-  const playerTwo = playerFactory('Player Two', markerTwo);
-
-  return (playerOne, playerTwo);
-};
 
 // Display tile board
 gameModule.displayBoard();
@@ -191,7 +201,7 @@ switchButton.addEventListener('click', gameModule.switchMarkers);
 startButton.addEventListener('click', () => {
 
   // Create players and insert announcer
-  createPlayers();
+  currentPlayers = gameModule.createPlayers();
   gameModule.clearMiddleFooter();
   gameModule.insertAnnouncer();
 
