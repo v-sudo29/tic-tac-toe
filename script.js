@@ -40,8 +40,15 @@ const gameModule = (() => {
         gameTile.classList.remove('empty');
     });
   };
-
-  return {gameBoard, displayBoard, switchMarkers, populate};
+  
+  // Clear middle footer
+  const clearMiddleFooter = () => {
+    const middleFooterDiv = document.querySelector('.middle-footer');
+    while (middleFooterDiv.hasChildNodes()) {
+      middleFooterDiv.removeChild(middleFooterDiv.childNodes[0]);
+    }
+  }
+  return {gameBoard, displayBoard, switchMarkers, populate, clearMiddleFooter};
 })();
 
 // Player factory
@@ -58,13 +65,6 @@ const createPlayers = () => {
   const playerTwo = playerFactory('player two', markerTwo);
 };
 
-// FUNCTION : clear middle footer
-const clearMiddleFooter = () => {
-  const middleFooterDiv = document.querySelector('.middle-footer');
-  while (middleFooterDiv.hasChildNodes()) {
-    middleFooterDiv.removeChild(middleFooterDiv.childNodes[0]);
-  }
-}
 // Display tile board
 gameModule.displayBoard();
 
@@ -74,7 +74,7 @@ switchButton.addEventListener('click', gameModule.switchMarkers);
 // BUTTON: Start game
 startButton.addEventListener('click', () =>{
   createPlayers();
-  clearMiddleFooter();
+  gameModule.clearMiddleFooter();
 });
 
 // Listen for user click, populate tile with marker
