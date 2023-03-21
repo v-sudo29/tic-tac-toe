@@ -127,3 +127,10 @@ body {
 .start-button {
   padding: 20px 47px;
 }
+
+.announcer {
+  position: relative;
+  bottom: 40px;
+  font-size: 50px;
+  font-weight: 400;
+}
