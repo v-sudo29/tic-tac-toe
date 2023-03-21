@@ -19,9 +19,7 @@ const gameModule = (() => {
 })();
 
 // Players
-const playerFactory = (name, marker) => {
-  // code goes here
-};
+const playerFactory = (name, marker) => ({ name, marker });
 
 gameModule.displayBoard();
 

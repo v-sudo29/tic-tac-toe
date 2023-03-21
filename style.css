@@ -5,14 +5,30 @@
   box-sizing: border-box;
 }
 
-body, html {
+body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  min-width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'Roboto';
+}
+
+.header, .footer {
+  flex: 1;
+  width: 100%;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #5f806b;
+  font-size: 60px;
 }
 
 /* Body */
@@ -43,4 +59,24 @@ body, html {
 
 .empty:hover {
   background-color: #dcfce7;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+}
+
+.player-one, .player-two {
+  display: flex;
+  align-items: center;
+  color: #5f806b;
+  gap: 20px;
+}
+
+.marker-one, .marker-two {
+  font-size: 50px;
+  color: #4ade80;
 }
