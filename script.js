@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 // Global variables
 const switchButton = document.querySelector('.switch-button');
 const startButton = document.querySelector('.start-button');
@@ -11,6 +12,68 @@ const gameModule = (() => {
   // Array holds players
   const currentPlayers = [];
 
+  // FUNCTION: disable tiles
+  const _disableTiles = () => {
+    const allEmptyTiles = document.querySelectorAll('.empty');
+    allEmptyTiles.forEach((tile) => tile.classList.remove('empty'));
+  }
+
+  // FUNCTION: announce winner
+  const _announceWinner = (winner) => {
+    document.querySelector('.announcer').innerHTML = `${winner} wins!`;
+  };
+
+  // FUNCTION: check if a player has won
+  const _checkWinner = () => {
+    const markerOne = document.querySelector('.marker-one').innerHTML;
+    const markerTwo = document.querySelector('.marker-two').innerHTML;
+    const playerOne = currentPlayers[0].name;
+    const playerTwo = currentPlayers[1].name;
+
+    // Horizontal match
+    if ((gameBoard[0] === markerOne) && (gameBoard[1] === markerOne) && (gameBoard[2] === markerOne) ||
+      (gameBoard[3] === markerOne) && (gameBoard[4] === markerOne) && (gameBoard[5] === markerOne) ||
+      ((gameBoard[6] === markerOne) && (gameBoard[7] === markerOne) && (gameBoard[8] === markerOne))) {
+        _announceWinner(playerOne);
+        _disableTiles();
+    } else if ((gameBoard[0] === markerTwo) && (gameBoard[1] === markerTwo) && (gameBoard[2] === markerTwo)
+      (gameBoard[3] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[5] === markerTwo)
+      (gameBoard[6] === markerTwo && gameBoard[7] === markerTwo && gameBoard[8] === markerTwo)) {
+        _announceWinner(playerTwo);
+        _disableTiles();
+    } 
+
+    // Vertical match
+    if (gameBoard[0] === markerOne && gameBoard[3] === markerOne && gameBoard[6] === markerOne) {
+      _announceWinner(playerOne);
+    } else if (gameBoard[1] === markerOne && gameBoard[4] === markerOne && gameBoard[7] === markerOne) {
+      _announceWinner(playerOne);
+    } else if (gameBoard[2] === markerOne && gameBoard[5] === markerOne && gameBoard[8] === markerOne) {
+      _announceWinner(playerOne);
+    }
+
+    if ((gameBoard[0] === markerTwo) && (gameBoard[3] === markerTwo) && (gameBoard[6] === markerTwo)) {
+      _announceWinner(playerTwo);
+    } else if ((gameBoard[1] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[7] === markerTwo)) {
+      _announceWinner(playerTwo);
+    } else if ((gameBoard[2] === markerTwo) && (gameBoard[5] === markerTwo) && (gameBoard[8] === markerTwo)) {
+      _announceWinner(playerTwo);
+    }
+
+    // Diagonal match
+    if (gameBoard[0] === markerOne && gameBoard[4] === markerOne && gameBoard[8] === markerOne) {
+      _announceWinner(playerOne);
+    } else if (gameBoard[2] === markerOne && gameBoard[4] === markerOne && gameBoard[6] === markerOne) {
+      _announceWinner(playerOne);
+    }
+
+    if ((gameBoard[0] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[8] === markerTwo)) {
+      _announceWinner(playerTwo);
+    } else if (gameBoard[2] === markerTwo && gameBoard[4] === markerTwo && gameBoard[6] === markerTwo) {
+      _announceWinner(playerTwo);
+    }
+  }
+
   // FUNCTION: create players
   const createPlayers = () => {
 
@@ -23,68 +86,6 @@ const gameModule = (() => {
     // Add players to currentPlayers array
     currentPlayers.push(one, two);
   };
-
-  // FUNCTION: disable tiles
-  const disableTiles = () => {
-    const allEmptyTiles = document.querySelectorAll('.empty');
-    allEmptyTiles.forEach((tile) => tile.classList.remove('empty'));
-  }
-
-  // FUNCTION: announce winner
-  const announceWinner = (winner) => {
-    document.querySelector('.announcer').innerHTML = `${winner} wins!`;
-  };
-
-  // FUNCTION: check if a player has won
-  const checkWinner = () => {
-    const markerOne = document.querySelector('.marker-one').innerHTML;
-    const markerTwo = document.querySelector('.marker-two').innerHTML;
-    const playerOne = currentPlayers[0].name;
-    const playerTwo = currentPlayers[1].name;
-
-    // Horizontal match
-    if ((gameBoard[0] === markerOne) && (gameBoard[1] === markerOne) && (gameBoard[2] === markerOne) ||
-      (gameBoard[3] === markerOne) && (gameBoard[4] === markerOne) && (gameBoard[5] === markerOne) ||
-      ((gameBoard[6] === markerOne) && (gameBoard[7] === markerOne) && (gameBoard[8] === markerOne))) {
-        announceWinner(playerOne);
-        disableTiles();
-    } else if ((gameBoard[0] === markerTwo) && (gameBoard[1] === markerTwo) && (gameBoard[2] === markerTwo)
-      (gameBoard[3] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[5] === markerTwo)
-      (gameBoard[6] === markerTwo && gameBoard[7] === markerTwo && gameBoard[8] === markerTwo)) {
-        announceWinner(playerTwo);
-        disableTiles();
-    } 
-
-    // Vertical match
-    if (gameBoard[0] === markerOne && gameBoard[3] === markerOne && gameBoard[6] === markerOne) {
-      announceWinner(playerOne);
-    } else if (gameBoard[1] === markerOne && gameBoard[4] === markerOne && gameBoard[7] === markerOne) {
-      announceWinner(playerOne);
-    } else if (gameBoard[2] === markerOne && gameBoard[5] === markerOne && gameBoard[8] === markerOne) {
-      announceWinner(playerOne);
-    }
-
-    if ((gameBoard[0] === markerTwo) && (gameBoard[3] === markerTwo) && (gameBoard[6] === markerTwo)) {
-      announceWinner(playerTwo);
-    } else if ((gameBoard[1] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[7] === markerTwo)) {
-      announceWinner(playerTwo);
-    } else if ((gameBoard[2] === markerTwo) && (gameBoard[5] === markerTwo) && (gameBoard[8] === markerTwo)) {
-      announceWinner(playerTwo);
-    }
-
-    // Diagonal match
-    if (gameBoard[0] === markerOne && gameBoard[4] === markerOne && gameBoard[8] === markerOne) {
-      announceWinner(playerOne);
-    } else if (gameBoard[2] === markerOne && gameBoard[4] === markerOne && gameBoard[6] === markerOne) {
-      announceWinner(playerOne);
-    }
-
-    if ((gameBoard[0] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[8] === markerTwo)) {
-      announceWinner(playerTwo);
-    } else if (gameBoard[2] === markerTwo && gameBoard[4] === markerTwo && gameBoard[6] === markerTwo) {
-      announceWinner(playerTwo);
-    }
-  }
 
   // FUNCTION: Display game board tiles
   const displayBoard = () => {
@@ -139,7 +140,7 @@ const gameModule = (() => {
           gameBoard[index] = `${markerOne}`;
 
           // Check winner
-          checkWinner();
+          _checkWinner();
 
         } else if (childDiv.classList.contains('player-two-announcer') && gameTile.classList.contains('empty')) {
           // Update tile HTML
@@ -155,7 +156,7 @@ const gameModule = (() => {
           gameBoard[index] = `${markerTwo}`;
 
           // Check winner
-          checkWinner();
+          _checkWinner();
         }
     });
   };
