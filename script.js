@@ -193,7 +193,7 @@ switchButton.addEventListener('click', gameModule.switchMarkers);
 startButton.addEventListener('click', () => {
 
   // Create players and insert announcer
-  currentPlayers = gameModule.createPlayers();
+  gameModule.createPlayers();
   gameModule.clearMiddleFooter();
   gameModule.insertAnnouncer();
 

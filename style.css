@@ -11,10 +11,11 @@ body {
   min-height: 100vh;
   min-width: 100vw;
   font-family: 'Roboto';
+  background-color: #059669;
 }
 
 .header, .player-one, .player-two {
-  color: #8bba9c;
+  color: #f0fdf4;
 }
 
 /* Body Div */
@@ -42,11 +43,11 @@ body {
   justify-content: center;
 }
 
-.border-container {
+/* .border-container {
   height: 89.7%;
   background-color: #4ade80;
   width: 610px;
-}
+} */
 
 .gameboard-container {
   height: 100%;
@@ -58,7 +59,7 @@ body {
 }
 
 .tile {
-  background-color: #f0fdf4;
+  background-color: #ecfdf5;
   min-width: 200px;
   min-height: 200px;
   font-size: 100px;
