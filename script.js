@@ -221,6 +221,11 @@ const gameModule = (() => {
           tile.innerHTML = '';
         }
       });
+
+      // Reset gameBoard array
+      for (let i = 0; i < 9; i++) {
+        gameBoard[i] = '';
+      }
     });
   }
   
