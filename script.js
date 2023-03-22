@@ -194,10 +194,34 @@ const gameModule = (() => {
   // FUNCTION: Insert restart button
   const insertRestartButton = () => {
     const middleFooterDiv = document.querySelector('.middle-footer');
-    const restartButton = document.createElement('button');
-    restartButton.classList.add('restart-button');
-    restartButton.innerHTML = 'Restart';
-    middleFooterDiv.appendChild(restartButton);
+    const newRestartButton = document.createElement('button');
+    newRestartButton.classList.add('restart-button');
+    newRestartButton.innerHTML = 'Restart';
+    middleFooterDiv.appendChild(newRestartButton);
+
+    // Add event listener to restart button
+    const restartButton = document.querySelector('.restart-button');
+    restartButton.addEventListener('click', () => {
+
+      // Reset announcer
+      const announcer = document.querySelector('.announcer');
+
+      if (announcer.classList.contains('player-one-announcer')) {
+        announcer.innerHTML = 'Player One\'s turn';
+      } else if (announcer.classList.contains('player-two-announcer')) {
+        announcer.innerHTML = 'Player One\'s turn';
+      }
+
+      // Reset all tiles to empty and clear markers
+      const tiles = document.querySelectorAll('.tile');
+      tiles.forEach((tile) => {
+
+        if (tile.classList.contains('empty') === false) {
+          tile.classList.add('empty');
+          tile.innerHTML = '';
+        }
+      });
+    });
   }
   
   // FUNCTION: Clear middle footer

@@ -38,11 +38,14 @@ body {
 
 /* Body */
 .content {
-  margin: auto;
   min-height: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.content-container {
+  min-height: 0;
 }
 
 .gameboard-container {
@@ -100,6 +103,7 @@ body {
 
 /* Middle Footer */
 .middle-footer {
+  text-align: center;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -135,12 +139,9 @@ body {
 
 .restart-button {
   padding: 20px 50px;
-
 }
 
 .announcer {
-  position: relative;
-  bottom: 40px;
   font-size: 50px;
   font-weight: 400;
   color: #ecfdf5;
