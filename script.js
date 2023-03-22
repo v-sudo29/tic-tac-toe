@@ -24,6 +24,12 @@ const gameModule = (() => {
     currentPlayers.push(one, two);
   };
 
+  // FUNCTION: disable tiles
+  const disableTiles = () => {
+    const allEmptyTiles = document.querySelectorAll('.empty');
+    allEmptyTiles.forEach((tile) => tile.classList.remove('empty'));
+  }
+
   // FUNCTION: announce winner
   const announceWinner = (winner) => {
     document.querySelector('.announcer').innerHTML = `${winner} wins!`;
@@ -41,10 +47,12 @@ const gameModule = (() => {
       (gameBoard[3] === markerOne) && (gameBoard[4] === markerOne) && (gameBoard[5] === markerOne) ||
       ((gameBoard[6] === markerOne) && (gameBoard[7] === markerOne) && (gameBoard[8] === markerOne))) {
         announceWinner(playerOne);
+        disableTiles();
     } else if ((gameBoard[0] === markerTwo) && (gameBoard[1] === markerTwo) && (gameBoard[2] === markerTwo)
       (gameBoard[3] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[5] === markerTwo)
       (gameBoard[6] === markerTwo && gameBoard[7] === markerTwo && gameBoard[8] === markerTwo)) {
         announceWinner(playerTwo);
+        disableTiles();
     } 
 
     // Vertical match
