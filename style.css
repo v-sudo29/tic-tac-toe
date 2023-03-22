@@ -109,7 +109,9 @@ body {
   height: 100%;
 }
 
-.switch-button, .start-button {
+.switch-button,
+.start-button,
+.restart-button {
   border: none;
   border-radius: 15px;
   padding: 20px 30px;
@@ -119,13 +121,21 @@ body {
   cursor: pointer;
 }
 
-.switch-button:hover, .start-button:hover {
+.switch-button:hover,
+.start-button:hover,
+.restart-button:hover {
   background-color: #69e88d;
   box-shadow: 2px 2px 2px rgb(0 0 0 / 0.1);
+  cursor: pointer;
 }
 
 .start-button {
   padding: 20px 47px;
+}
+
+.restart-button {
+  padding: 20px 50px;
+
 }
 
 .announcer {

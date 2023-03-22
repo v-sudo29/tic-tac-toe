@@ -190,6 +190,15 @@ const gameModule = (() => {
     announcer.appendChild(text);
     middleFooterDiv.appendChild(announcer);
   }
+
+  // FUNCTION: Insert restart button
+  const insertRestartButton = () => {
+    const middleFooterDiv = document.querySelector('.middle-footer');
+    const restartButton = document.createElement('button');
+    restartButton.classList.add('restart-button');
+    restartButton.innerHTML = 'Restart';
+    middleFooterDiv.appendChild(restartButton);
+  }
   
   // FUNCTION: Clear middle footer
   const clearMiddleFooter = () => {
@@ -206,7 +215,8 @@ const gameModule = (() => {
           populate, 
           clearMiddleFooter, 
           insertAnnouncer,
-          showMarkerHover
+          showMarkerHover,
+          insertRestartButton
         };
 })();
 
@@ -226,6 +236,7 @@ startButton.addEventListener('click', () => {
   gameModule.createPlayers();
   gameModule.clearMiddleFooter();
   gameModule.insertAnnouncer();
+  gameModule.insertRestartButton();
 
   // Players can populate tiles
   const allTiles = document.querySelectorAll('.tile');
