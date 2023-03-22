@@ -58,6 +58,7 @@ body {
 
 .tile {
   min-height: 0;
+  border-radius: 3px;
   background-color: #ecfdf5;
   font-size: 100px;
   font-weight: 500;
