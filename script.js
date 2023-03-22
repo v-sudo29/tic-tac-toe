@@ -46,31 +46,41 @@ const gameModule = (() => {
     // Vertical match
     if (gameBoard[0] === markerOne && gameBoard[3] === markerOne && gameBoard[6] === markerOne) {
       _announceWinner(playerOne);
+      _disableTiles();
     } else if (gameBoard[1] === markerOne && gameBoard[4] === markerOne && gameBoard[7] === markerOne) {
       _announceWinner(playerOne);
+      _disableTiles();
     } else if (gameBoard[2] === markerOne && gameBoard[5] === markerOne && gameBoard[8] === markerOne) {
       _announceWinner(playerOne);
+      _disableTiles();
     }
 
     if ((gameBoard[0] === markerTwo) && (gameBoard[3] === markerTwo) && (gameBoard[6] === markerTwo)) {
       _announceWinner(playerTwo);
+      _disableTiles();
     } else if ((gameBoard[1] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[7] === markerTwo)) {
       _announceWinner(playerTwo);
+      _disableTiles();
     } else if ((gameBoard[2] === markerTwo) && (gameBoard[5] === markerTwo) && (gameBoard[8] === markerTwo)) {
       _announceWinner(playerTwo);
+      _disableTiles();
     }
 
     // Diagonal match
     if (gameBoard[0] === markerOne && gameBoard[4] === markerOne && gameBoard[8] === markerOne) {
       _announceWinner(playerOne);
+      _disableTiles();
     } else if (gameBoard[2] === markerOne && gameBoard[4] === markerOne && gameBoard[6] === markerOne) {
       _announceWinner(playerOne);
+      _disableTiles();
     }
 
     if ((gameBoard[0] === markerTwo) && (gameBoard[4] === markerTwo) && (gameBoard[8] === markerTwo)) {
       _announceWinner(playerTwo);
+      _disableTiles();
     } else if (gameBoard[2] === markerTwo && gameBoard[4] === markerTwo && gameBoard[6] === markerTwo) {
       _announceWinner(playerTwo);
+      _disableTiles();
     }
   }
 
