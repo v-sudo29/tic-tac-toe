@@ -132,8 +132,10 @@ const gameModule = (() => {
     tile.addEventListener('mouseover', () => {
       if (announcerClassList.contains('player-one-announcer') && tile.classList.contains('empty')) {
         tile.innerHTML = markerOne;
+        tile.style.color = '#c0c9c6';
       } else if (announcerClassList.contains('player-two-announcer') && tile.classList.contains('empty')) {
         tile.innerHTML = markerTwo;
+        tile.style.color = '#c0c9c6';
       }
     });
     tile.addEventListener('mouseleave', () => {
@@ -158,6 +160,7 @@ const gameModule = (() => {
 
         if (childDiv.classList.contains('player-one-announcer') && gameTile.classList.contains('empty')) {
           // Update tile HTML
+          gameTile.style.color = '#059669';
           gameTile.innerHTML = `${markerOne}`;
           gameTile.classList.remove('empty');
 
@@ -174,6 +177,7 @@ const gameModule = (() => {
 
         } else if (childDiv.classList.contains('player-two-announcer') && gameTile.classList.contains('empty')) {
           // Update tile HTML
+          gameTile.style.color = '#059669';
           gameTile.innerHTML = `${markerTwo}`;
           gameTile.classList.remove('empty');
 
