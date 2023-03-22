@@ -112,11 +112,31 @@ const gameModule = (() => {
     }
   };
 
+  // FUNCTION: Show marker when hover
+  const showMarkerHover = (tile) => {
+    const markerOne = document.querySelector('.marker-one').innerHTML;
+    const markerTwo = document.querySelector('.marker-two').innerHTML;
+    const announcerClassList = document.querySelector('.announcer').classList;
+    tile.classList.add('empty');
+
+    tile.addEventListener('mouseover', () => {
+      if (announcerClassList.contains('player-one-announcer') && tile.classList.contains('empty')) {
+        tile.innerHTML = markerOne;
+      } else if (announcerClassList.contains('player-two-announcer') && tile.classList.contains('empty')) {
+        tile.innerHTML = markerTwo;
+      }
+    });
+    tile.addEventListener('mouseleave', () => {
+      if (announcerClassList.contains('player-one-announcer') && tile.classList.contains('empty')) {
+        tile.innerHTML = '';
+      } else if (announcerClassList.contains('player-two-announcer') && tile.classList.contains('empty')) {
+        tile.innerHTML = '';
+      }
+    });
+  }
+
   // FUNCTION: Populate empty tile with current player's marker
   const populate = (gameTile) => {
-
-    // Add hover
-    gameTile.classList.add('empty');
 
       // Event listener to populate tile
       gameTile.addEventListener('click', () => {
@@ -186,6 +206,7 @@ const gameModule = (() => {
           populate, 
           clearMiddleFooter, 
           insertAnnouncer,
+          showMarkerHover
         };
 })();
 
@@ -208,5 +229,8 @@ startButton.addEventListener('click', () => {
 
   // Players can populate tiles
   const allTiles = document.querySelectorAll('.tile');
-  allTiles.forEach((gameTile) => gameModule.populate(gameTile));  
+  allTiles.forEach((gameTile) => {
+    gameModule.showMarkerHover(gameTile);
+    gameModule.populate(gameTile);
+  });  
 });
